@@ -1,9 +1,10 @@
 FROM php:8.2-apache
 
-RUN apt-get update && apt-get install -y \
-    libssl-dev \
+RUN apt-get update && apt-get install -y libssl-dev \
     && docker-php-ext-install mysqli pdo pdo_mysql \
-    && a2enmod rewrite
+    && a2enmod rewrite \
+    && a2dismod mpm_event \
+    && a2enmod mpm_prefork
 
 COPY . /var/www/html/
 

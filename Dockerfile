@@ -1,7 +1,5 @@
-FROM php:8.2-apache
+FROM webdevops/php-apache:8.2
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql
-
-COPY . /var/www/html/
+COPY . /app
 
 EXPOSE 80
